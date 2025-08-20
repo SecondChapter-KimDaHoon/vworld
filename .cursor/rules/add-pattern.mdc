@@ -1,0 +1,49 @@
+---
+description: Enforces Atomic Design and Feature-based Architecture rules.
+globs:
+  - "src/**/*.ts"
+  - "src/**/*.tsx"
+alwaysApply: true
+---
+
+# Atomic Design and Feature-based Architecture Rules
+
+## 1. Folder Structure and Dependencies
+
+- **`src/shared/components`** must contain only reusable Atom components.
+- **`src/features/[feature-name]`** must group all code related to a specific feature (Organisms, Molecules, Hooks, Services, etc.).
+- **`src/pages`** must contain only top-level page components.
+- Code in `shared` must **never** import code from `features`. (Unidirectional dependency)
+- Code in `features` can import code from `shared`.
+
+## 2. Atomic Design Stage Rules
+
+### Atoms
+- The smallest, indivisible UI components.
+- Place in `src/shared/components` if they are used across the entire project.
+- Place in `src/features/[feature-name]/components/atoms` if they are only used within a specific feature.
+
+### Molecules
+- Units formed by combining Atoms to perform a specific function.
+- Place in `src/features/[feature-name]/components/molecules`.
+
+### Organisms
+- Complex UI sections built from Atoms and Molecules.
+- Place in `src/features/[feature-name]/components/organisms`.
+- These components should only make sense within the context of their feature.
+
+### Templates
+- Layout components that handle the arrangement and structure of Organisms and Molecules.
+- They should not contain real data or business logic.
+- Place in `src/features/[feature-name]/components/templates`.
+
+### Pages
+- The final screens that fill Templates with real data.
+- Place in `src/pages`.
+
+## 3. Naming Conventions
+
+- **Templates:** Append the suffix **`Layout`** or **`Template`** to the filename. (e.g., `FindIdLayout.tsx`)
+- **Pages:** Append the suffix **`Page`** to the filename or use a clear name. (e.g., `LoginPage.tsx`, `Home.tsx`)
+
+---
