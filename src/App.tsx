@@ -85,8 +85,6 @@ function App() {
     modelz.addEventListener(eventHandler);
   };
 
-  const checkText = `1. 파일에서 gltf/glb 객체를 로드할 수 있습니다.`;
-
   return (
     <div className="flex flex-col w-full h-screen">
       <div id="vmap" className="w-full h-[60vh]" />
@@ -94,7 +92,6 @@ function App() {
         <input ref={fileInputRef} type="file" />
         <button onClick={handleFileLoad}>데이터로드</button>
       </div>
-      <div className="p-3 whitespace-pre-line">{checkText}</div>
     </div>
   );
 }

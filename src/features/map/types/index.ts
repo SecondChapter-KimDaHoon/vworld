@@ -1,8 +1,6 @@
 export type VWorldMapInstance = {
   setOption: (opts: unknown) => void;
   start: () => void;
-  // Optional bridge to underlying viewer (Cesium)
-  getViewer?: () => unknown;
 };
 
 export type VWorld = {
